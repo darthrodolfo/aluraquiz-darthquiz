@@ -29,6 +29,31 @@ const theme = db.theme;
 export default function App({ Component, pageProps }) {
   return (
     <>
+    <Head>
+      <title>Alura Quiz | Star Wars by Darth </title>
+      <link rel='preconnect' href='https://fonts.gstatic.com' />
+      <link rel='shortcut icon' href='/favicon.png' />
+      <link
+        href='https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap'
+        rel='stylesheet'
+      />
+    </Head>
+    <DefaultSeo
+      openGraph={{
+        type: 'website',
+        locale: 'pt_BR',
+        url: db.url,
+        site_name: db.title,
+        images: [
+          {
+            url: db.bg,
+            width: 800,
+            heigth: 600,
+            alt: db.title
+          }
+        ]
+      }}
+    />
       <ThemeProvider theme={theme}>
       <GlobalStyle />
         <Component {...pageProps} />
