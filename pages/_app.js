@@ -1,7 +1,8 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
-import db from '../db.json';
+import db from '../db.json'
 import { DefaultSeo } from 'next-seo'
 import Head from 'next/head'
+
 
 const GlobalStyle = createGlobalStyle`
   * {
