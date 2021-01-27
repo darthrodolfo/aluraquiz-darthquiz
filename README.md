@@ -1,6 +1,6 @@
 # Live Preview
 
-https://aluraquiz-darthquiz.darthrodolfo.vercel.app/
+https://aluraquiz-darthquiz.vercel.app/
 
 # Example app with styled-components
 
