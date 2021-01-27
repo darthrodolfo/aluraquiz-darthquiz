@@ -11,8 +11,7 @@ const Wrapper = styled.div`
 `;
 
 const SVGWrapper = styled.svg`
-  fill: ${({ theme }) => theme.colors.primary
-  };
+  fill: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.contrastText};
   cursor: pointer;
   &:hover .octo-arm{
