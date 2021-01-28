@@ -2,48 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-
+import PropTypes from 'prop-types';
+0
 import db from '../db.json';
 import Widget from '../src/components/Widget'
 import QuizLogo from '../src/components/QuizLogo'
 import QuizBackground from '../src/components/QuizBackground'
 import Footer from '../src/components/Footer'
 import GitHubCorner from '../src/components/GitHubCorner'
+import Input from '../src/components/Input'
+import Button from '../src/components/Button'
+import QuizContainer from '../src/components/QuizContainer'
 
-
-const QuizContainer = styled.div`
-  width: 100%;
-  max-width: 350px;
-  padding-top: 50px;
-  margin: auto 10%;
-  form {
-    display:flex;
-    flex-flow: column nowrap
-  }
-  form input {
-    padding:10px;
-    border-radius:${({ theme }) => theme.borderRadius};
-    border:solid 1px ${({ theme }) => theme.colors.secondary};
-    color: #FFFFFF;
-    background:transparent
-  }
-  form input:focus{
-    outline:0
-  }
-  form button {
-    padding:10px;
-    border-radius:${({ theme }) => theme.borderRadius};
-    border:none;
-    color:${({ theme }) => theme.colors.contrastText};
-    margin-top:10px;
-    background:${({ theme }) => theme.colors.button};
-    font-size: larger;
-  }
-  @media screen and (max-width: 500px) {
-    margin: auto;
-    padding: 20px;
-  }
-`
 
 export default function Home() {
   const router = useRouter();
@@ -58,21 +28,24 @@ export default function Home() {
         <QuizLogo />
         <Widget>
           <Widget.Header>
-            <h1>Quiz de Star Wars</h1>
+          <h1>{db.title}</h1>
           </Widget.Header>
           <Widget.Content>
+          <p>{db.description}</p>
             <form onSubmit={function (eventInfo) {
               eventInfo.preventDefault();
               router.push(`/quiz?name=${name}`);
             }}
             >
-              <input
-                onChange={function (eventInfo) {
-                  setName(eventInfo.target.value);
-                }}
-                placeholder="Qual é seu nome?"
+              <Input
+                name="nomeDoUsuario"
+                onChange={(infosDoEvento) => setName(infosDoEvento.target.value)}
+                placeholder="Diz ai seu nome!"
+                value={name}
               />
-               <button type='submit' disabled={name.length === 0}>{name.length === 0 ? 'Jogar' : 'Vamos la ' + name}</button>
+               <Button type="submit" disabled={name.length === 0}>
+                {`Jogar ${name}`}
+              </Button>
             </form>
           </Widget.Content>
         </Widget>
@@ -90,3 +63,14 @@ export default function Home() {
       </QuizBackground>
   );
 }
+
+Input.defaultProps = {
+  value: '',
+};
+
+Input.propTypes = {
+  onChange: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+};
