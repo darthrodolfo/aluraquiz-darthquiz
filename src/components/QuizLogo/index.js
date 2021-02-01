@@ -29,6 +29,8 @@ function Logo({ className }) {
 //   );
 // }
 return (
+  <div>
+  <a href="/">
   <svg className={className} xmlns="http://www.w3.org/2000/svg" width="300" height="117" viewBox="1398 87.8 1346 662" fill='none'>
   <switch>
     <g>
@@ -78,6 +80,8 @@ return (
     </g>
   </switch>
 </svg>
+</a>
+</div>
 ); 
 }
 

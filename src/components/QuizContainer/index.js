@@ -7,6 +7,7 @@ z-index: 2;
   padding-top: 20px;
   margin: auto 10%;
   //padding-top: 5%;
+  
   h1 {
     text-align: center;
   }

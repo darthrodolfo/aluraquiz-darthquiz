@@ -77,8 +77,8 @@ export default function UnmuteButtonCorner(videoReference) {
           {
             return;
           };
-          console.log(videoReference.videoReference.current.muted);
-          videoReference.videoReference.current.muted = false;
+          
+          videoReference.videoReference.current.muted = !videoReference.videoReference.current.muted;
           console.log(videoReference.videoReference.current.muted);
         }}>
         <img src='/audioIcon.png'></img>

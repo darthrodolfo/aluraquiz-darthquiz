@@ -9,6 +9,7 @@ import Button from '../../components/Button';
 import BackLinkArrow from '../../components/BackLinkArrow';
 import { Lottie } from '@crello/react-lottie';
 import UnmuteButtonCorner from '../../components/UnmuteSoundButton';
+import { motion } from 'framer-motion';
 
 import loadingAnimation from './animations/loading.json';
 
@@ -93,6 +94,7 @@ function QuestionWidget({
   const questionId = `question__${questionIndex}`;
   const isCorrect = selectedAlternative === question.answer;
   const hasAlternativeSelected = selectedAlternative !== undefined;
+  console.log('hasAlternativeSelected:'+hasAlternativeSelected);
 
   return (
     <Widget>
@@ -127,9 +129,9 @@ function QuestionWidget({
             setIsQuestionSubmited(true);
             setTimeout(() => {
               addResult(isCorrect);
-              onSubmit();
               setIsQuestionSubmited(false);
               setSelectedAlternative(undefined);
+              onSubmit();
             }, 2 * 1000);
           }}
         >
@@ -138,33 +140,47 @@ function QuestionWidget({
             const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
             const isSelected = selectedAlternative === alternativeIndex;
             return (
+              <>
               <Widget.Topic
-                as="label"
+                as={motion.label}
+                transition={{
+                  delay: 0.8,
+                  duration: 0.5,
+                }}
+                variants={{
+                  show: { opacity: 1 },
+                  hidden: { opacity: 0 },
+                }}
                 key={alternativeId}
                 htmlFor={alternativeId}
                 data-selected={isSelected}
-                data-status={alternativeStatus}
+                data-status={isQuestionSubmited && alternativeStatus}
               >
-                {alternative}
+                
                 <input
                   type="radio"
                   style={{ display: 'none' }}
+                  checked={isSelected}
                   id={alternativeId}
                   name={questionId}
-                  onChange={() => setSelectedAlternative(alternativeIndex)}
-                  type="radio"
-                  value={alternativeIndex}
+                  onChange={(arebaba) => {
+                    console.log(arebaba);
+                    console.log('alternativeIndex:'+alternativeIndex);
+                    setSelectedAlternative(alternativeIndex)
+                  }}
                 />
+                {alternative}
               </Widget.Topic>
+              </>
             );
           })}
 
           {/* <pre>
             {JSON.stringify(question, null, 4)}
           </pre> */}
-          <Button type="submit" disabled={hasAlternativeSelected == false} text= 'Confirmar'/>
-          {isQuestionSubmited && isCorrect && <p>Você acertou!</p>}
-          {isQuestionSubmited && !isCorrect && <p>Você errou!</p>}
+          <Button type="submit" disabled={hasAlternativeSelected == false} text='Confirmar'/>
+          {isQuestionSubmited && isCorrect && <strong>Você acertou!</strong>}
+          {isQuestionSubmited && !isCorrect && <strong>Você errou!</strong>}
         </AlternativeForm>
       </Widget.Content>
     </Widget>

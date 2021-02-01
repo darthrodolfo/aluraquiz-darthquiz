@@ -3,13 +3,28 @@ import styled from 'styled-components';
 const AlternativeForm = styled.form`
   label {
     &[data-selected="true"] {
-      background-color: ${({ theme }) => theme.colors.primary};
+      background-image: linear-gradient(
+			to right,
+			red,
+			white,
+      white
+		);
       
       &[data-status="SUCCESS"] {
-        background-color: ${({ theme }) => theme.colors.success};
+        background-image: linear-gradient(
+			to right,
+			green,
+			green,
+      white
+		);
       }
       &[data-status="ERROR"] {
-        background-color: ${({ theme }) => theme.colors.wrong};
+        background-image: linear-gradient(
+			to right,
+			darkred,
+			darkred,
+      red
+		);
       }
     }
     &:focus {

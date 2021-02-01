@@ -134,8 +134,8 @@
       "secondary": "#FFFFFF",
       "mainBg": "#242424",
       "contrastText": "#FFFFFF",
-      "wrong": "#f44336",
-      "success": "#4CAF50",
+      "wrong": "#660700",
+      "success": "#2ACE30",
       "button": "#F40303",
       "primaryGradientStart": "#333333",
       "primaryGradientEnd": "#dd1818"

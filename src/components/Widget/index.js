@@ -5,7 +5,7 @@ z-index:2;
   margin-top: 24px;
   margin-bottom: 24px;
   border: 1px solid ${({ theme }) => theme.colors.primary};
-  background-color: ${({ theme }) => theme.colors.mainBg};
+  background-color: #242424b5;
   border-radius: 4px;
   overflow: hidden;
   @import url('https://fonts.googleapis.com/css2?family=Raleway&family=Roboto&display=swap');
@@ -48,8 +48,8 @@ Widget.Header = styled.header`
   padding: 18px 32px;
   border-bottom: 2px solid white;
   //background-color: ${({ theme }) => theme.colors.primary};
-  background-image: linear-gradient(to right, ${({ theme }) => theme.colors.primaryGradientStart}, ${({ theme }) => theme.colors.primaryGradientEnd});
-  border-image: linear-gradient(to right, white, ${({ theme }) => theme.colors.primaryGradientEnd}) 0 1 100%;
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,0.7));
+  //border-image: linear-gradient(to right, white, ${({ theme }) => theme.colors.primaryGradientEnd}) 0 1 100%;
   
   * {
     margin: 0;
@@ -76,23 +76,46 @@ Widget.Topic = styled.a`
   outline: 0;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.contrastText};
-  background-color: ${({ theme }) => `${theme.colors.primary}40`};
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
   padding: 10px 15px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   cursor: pointer;
   border-radius: ${({ theme }) => theme.borderRadius};
-  transition: .3s;
+  transition: 0.3s;
   display: block; 
 
+  transition: transform 100ms linear;
+  
+  text {
+    opacity: 1;
+  }
   font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: 300;
     line-height: 1;
-    margin-bottom: 0;
-  
+
+  & input {
+		display: none;
+	}
+
+  &.active {
+		background-image: linear-gradient(
+			to right,
+			yellow,
+			pink
+		);
+	}
   &:hover,
   &:focus {
-    opacity: .5;
+    box-shadow: 2px 2px 2px #222;
+		transform: translate(-5px, -2px);
+		background-image: linear-gradient(
+			to right,
+			red,
+      red,
+			white,
+      white
+		);
   }
 `;
 

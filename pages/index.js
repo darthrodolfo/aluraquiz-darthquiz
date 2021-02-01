@@ -81,7 +81,7 @@ export default function Home() {
         >
           <Widget.Content>
             <h1>Quizes da Galera</h1>
-
+            <hr></hr>
             <ul>
               {db.external.map((linkExterno) => {
                 const [projectName, githubUser] = linkExterno

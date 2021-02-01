@@ -53,10 +53,9 @@ const QuizBackgroundVideo = styled.video`
 //export default QuizBackground;
 
 export default function QuizBackground({videoSrc, videoReference, ...props}) {
-  props = {...props, autoPlay:true}
   return(
     <div>
-        <QuizBackgroundVideo width='100%' ref={videoReference} autoPlay muted {...props}>
+        <QuizBackgroundVideo width='100%' ref={videoReference} autoPlay muted loop='' {...props}>
           <source src={videoSrc} type="video/mp4"/>
         </QuizBackgroundVideo>
       <QuizBackgroundBase videoReference {...props}/>
