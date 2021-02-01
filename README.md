@@ -5,6 +5,8 @@
 	<h1>Quiz</h1>
 </div>
 
+<hr/>
+
 # Live Preview
 
 https://aluraquiz-darthquiz.vercel.app/
