@@ -143,17 +143,18 @@ function QuestionWidget({
                 key={alternativeId}
                 htmlFor={alternativeId}
                 data-selected={isSelected}
-                data-status={isQuestionSubmited && alternativeStatus}
+                data-status={alternativeStatus}
               >
+                {alternative}
                 <input
-                  type="none"
+                  type="radio"
                   style={{ display: 'none' }}
                   id={alternativeId}
                   name={questionId}
                   onChange={() => setSelectedAlternative(alternativeIndex)}
                   type="radio"
+                  value={alternativeIndex}
                 />
-                {alternative}
               </Widget.Topic>
             );
           })}

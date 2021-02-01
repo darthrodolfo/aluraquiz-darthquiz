@@ -19,12 +19,21 @@ z-index:2;
   }
   h2 {
     font-weight: 400;
+    line-height: 1;
+		margin-bottom: 0;
+  }
+  h3 {
+    line-height: 1;
+		margin-bottom: 0;
   }
   p {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 300;
     line-height: 1;
+    margin-top: 20px;
+		margin-bottom: 32px;
+    line-height: 1.2;
   }
   hr {
     border-image: linear-gradient(to right, white, transparent, transparent) 0 1 100%;
@@ -73,7 +82,13 @@ Widget.Topic = styled.a`
   cursor: pointer;
   border-radius: ${({ theme }) => theme.borderRadius};
   transition: .3s;
-  display: block;
+  display: block; 
+
+  font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0;
   
   &:hover,
   &:focus {
