@@ -1,13 +1,15 @@
 // src/components/QuizBackground/index.js
 import styled from 'styled-components';
+import React, { useRef } from 'react';
 
-const QuizBackground = styled.div`
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  background-image: url(${({ backgroundImage }) => backgroundImage});
-  background-color: ${({ theme }) => theme.colors.mainBg};
-  flex: 1;
+const QuizBackgroundBase = styled.div`
+  //background-image: url(${({ backgroundImage }) => backgroundImage});
+  //console.log(backgroundImage);
+  //background-image: url('https://j.gifs.com/lxJVMV.gif');
+  //background-image: ${({ test }) => test};
+  //background-image: url('/backgif.gif');
+  //background-color: ${({ theme }) => theme.colors.mainBg};
+  
   @media screen and (max-width: 500px) {
     background-image: none;
     &:after {
@@ -33,4 +35,42 @@ const QuizBackground = styled.div`
   }
 `;
 
-export default QuizBackground;
+const QuizBackgroundVideo = styled.video`
+    right:0;
+    bottom:0;
+    min-height: 100%;
+    min-width: 100%;
+    z-index:-1000;
+    position:fixed;
+    background-size: cover;
+    height: auto;
+    width:auto;
+    opacity:1;
+    //background: url(images/torre.jpg) no-repeat;
+    //background: url(${({ backgroundImage }) => backgroundImage}) no-repeat;
+`;
+
+//export default QuizBackground;
+
+export default function QuizBackground({videoSrc, videoReference, ...props}) {
+  props = {...props, autoPlay:true}
+  return(
+    <div>
+        <QuizBackgroundVideo width='100%' ref={videoReference} autoPlay muted {...props}>
+          <source src={videoSrc} type="video/mp4"/>
+        </QuizBackgroundVideo>
+      <QuizBackgroundBase videoReference {...props}/>
+    </div>
+  );
+}
+
+{/* <div>
+        <video width='100%' autoPlay muted>
+          <source src="/Star Wars The Last Jedi  Lightspeed Scene 4K (Holdo's Sacrifice).mp4" type="video/mp4"/>
+        </video>
+      </div> */}
+
+
+{/* <video width='100%' autoPlay muted>
+      <source src="/Star Wars The Last Jedi  Lightspeed Scene 4K (Holdo's Sacrifice).mp4" type="video/mp4"/>
+    </video> */}
