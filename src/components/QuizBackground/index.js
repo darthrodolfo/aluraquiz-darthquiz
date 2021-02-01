@@ -1,6 +1,6 @@
 // src/components/QuizBackground/index.js
 import styled from 'styled-components';
-import React, { useRef } from 'react';
+import React from 'react';
 
 const QuizBackgroundBase = styled.div`
   //background-image: url(${({ backgroundImage }) => backgroundImage});

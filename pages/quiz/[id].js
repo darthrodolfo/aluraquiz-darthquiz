@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components';
-import Quiz from '../../components/screens/Quiz/Quiz'
-import AluraLogo from '../../svgs/AluraLogo.svg'
+import Quiz from '../../src/screens/Quiz/index';
+import AluraLogo from '../../src/svg/AluraLogo.svg';
 export default function QuizDaGalera({dbExterno}){
     return (
         <ThemeProvider theme={dbExterno.theme}>
@@ -22,10 +22,7 @@ export async function getServerSideProps(context){
           throw new Error('Falha em pegar os dados')
         })
         .then((respostaConvertidaEmObjeto) => respostaConvertidaEmObjeto)
-        .catch((err) => {
-          //console.error(err);
-        });
-  
+
       // console.log('Infos que o Next da para nós', context.query.id);
       return {
         props: {

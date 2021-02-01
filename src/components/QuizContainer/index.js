@@ -35,6 +35,12 @@ z-index: 2;
     margin-top:10px;
   }
 
+  form hr {
+    
+    width: 100%;
+    border-image: linear-gradient(to right, white, transparent, transparent) 0 1 100%;
+  }
+
   .quizFinalScreen {
     padding-top: 5%;
     color: #000000;

@@ -1,5 +1,5 @@
 // src/components/GitHubCorner/index.js
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -69,7 +69,6 @@ const SVGWrapper = styled.svg`
 export default function UnmuteButtonCorner(videoReference) {
   return (
     <Wrapper>
-      {/* <i class="fas fa-music" width='100px'></i> */}
         <a href="/" target="_blank" rel="noreferrer" onClick={(eventInfo) => {
           eventInfo.preventDefault();
 
@@ -79,7 +78,6 @@ export default function UnmuteButtonCorner(videoReference) {
           };
           
           videoReference.videoReference.current.muted = !videoReference.videoReference.current.muted;
-          console.log(videoReference.videoReference.current.muted);
         }}>
         <img src='/audioIcon.png'></img>
         </a>

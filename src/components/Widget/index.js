@@ -81,14 +81,12 @@ Widget.Topic = styled.a`
   margin-bottom: 10px;
   cursor: pointer;
   border-radius: ${({ theme }) => theme.borderRadius};
-  transition: 0.3s;
+  transition: .3s;
   display: block; 
 
   transition: transform 100ms linear;
   
-  text {
-    opacity: 1;
-  }
+  
   font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: 300;

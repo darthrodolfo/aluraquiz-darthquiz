@@ -1,3 +1,10 @@
+
+
+<div align="center">
+	<img src="public/banner.png" with="800" height="200"/>
+	<h1>Quiz</h1>
+</div>
+
 # Live Preview
 
 https://aluraquiz-darthquiz.vercel.app/

@@ -17,10 +17,13 @@ import QuizContainer from '../src/components/QuizContainer';
 import UnmuteButtonCorner from '../src/components/UnmuteSoundButton';
 
 
+
 export default function Home() {
   const router = useRouter();
   const videoRef = useRef();
   const [name, setName] = React.useState('');
+
+  
 
 
   return (
@@ -53,6 +56,8 @@ export default function Home() {
           }}
           src='https://i.imgur.com/LKkWQJt.gif'/>
           <p>{db.description}</p>
+          
+
             <form onSubmit={function (eventInfo) {
               eventInfo.preventDefault();
               router.push(`/quiz?name=${name}`);
@@ -60,11 +65,23 @@ export default function Home() {
             >
               <Input
                 name="nomeDoUsuario"
-                onChange={(infosDoEvento) => setName(infosDoEvento.target.value)}
+                onChange={(infosDoEvento) => 
+                  {
+                    setName(infosDoEvento.target.value);
+                    if(videoRef != undefined)
+                    {
+                      if(videoRef.current != undefined)
+                      if(videoRef.current.muted != undefined)
+                       videoRef.current.muted = false;
+                    }
+                  }}
                 placeholder="Diz ai seu nome!"
                 value={name}
               />
                <Button type="submit" disabled={name.length === 0} text={name.length === 0 ? 'Começar' : `Vamos lá, ${name}!`}/>
+               <h3>Verifique o volume do seu som!</h3>
+               <hr/>
+               <small>Irei adicionar muitas features nesse projeto nos próximos dias, não esqueça de seguir o repositório!</small>
             </form>
           </Widget.Content>
         </Widget>
@@ -94,7 +111,9 @@ export default function Home() {
                   <li key={linkExterno}>
                     <Widget.Topic
                       as={Link}
-                      href={`/quiz/${projectName}___${githubUser}`}
+                      href='/'
+                      data-selected='false'
+                      // href={`/quiz/${projectName}___${githubUser}`}
                     >
                       {`${githubUser}/${projectName}`}
                     </Widget.Topic>

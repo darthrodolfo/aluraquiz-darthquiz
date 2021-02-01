@@ -1,45 +1,36 @@
-import React, {useRef} from 'react';
-import Widget from '../../components/Widget';
-import QuizLogo from '../../components/QuizLogo';
-import QuizBackground from '../../components/QuizBackground';
-import GitHubCorner from '../../components/GitHubCorner'
-import QuizContainer from '../../components/QuizContainer';
-import AlternativeForm from '../../components/AlternativeForm';
-import Button from '../../components/Button';
-import BackLinkArrow from '../../components/BackLinkArrow';
-import { Lottie } from '@crello/react-lottie';
-import UnmuteButtonCorner from '../../components/UnmuteSoundButton';
-import { motion } from 'framer-motion';
+import React, { useRef } from "react";
+import Widget from "../../components/Widget";
+import QuizLogo from "../../components/QuizLogo";
+import QuizBackground from "../../components/QuizBackground";
+import GitHubCorner from "../../components/GitHubCorner";
+import QuizContainer from "../../components/QuizContainer";
+import AlternativeForm from "../../components/AlternativeForm";
+import Button from "../../components/Button";
+import BackLinkArrow from "../../components/BackLinkArrow";
+import { Lottie } from "@crello/react-lottie";
+import UnmuteButtonCorner from "../../components/UnmuteSoundButton";
+import { motion } from "framer-motion";
 
-import loadingAnimation from './animations/loading.json';
+import loadingAnimation from "./animations/loading.json";
 
 function ResultWidget({ results }) {
   return (
     <Widget>
       <Widget.Header>
-      <BackLinkArrow href="/" />
+        <BackLinkArrow href="/" />
         <h3>Tela de Resultado:</h3>
       </Widget.Header>
 
       <Widget.Content>
         <p>
-          Você acertou
-          {' '}
-          {}
-          {results.filter((x) => x).length}
-          {' '}
-          perguntas
+          Você acertou {}
+          {results.filter((x) => x).length} perguntas
         </p>
         <ul>
           {results.map((result, index) => (
             <li key={`result__${index}`}>
-              #
-              {index + 1}
-              {' '}
-              Resultado:
-              {result === true
-                ? 'Acertou'
-                : 'Errou'}
+              #{index + 1} Resultado:
+              {result === true ? "Acertou" : "Errou"}
             </li>
           ))}
         </ul>
@@ -55,12 +46,22 @@ function LoadingWidget() {
         <h3>Carregando...</h3>
       </Widget.Header>
 
-      <Widget.Content style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'black' }}>
+      <Widget.Content
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          backgroundColor: "black",
+        }}
+      >
         <Lottie
           width="200px"
           height="200px"
           className="lottie-container basic"
-          config={{ animationData: loadingAnimation, loop: true, autoplay: true }}
+          config={{
+            animationData: loadingAnimation,
+            loop: true,
+            autoplay: true,
+          }}
         />
       </Widget.Content>
     </Widget>
@@ -74,7 +75,7 @@ function LoadingWidget() {
 //   @keyframes glow {
 //     from {
 //       text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #f8c4c4, 0 0 40px #ee7575, 0 0 50px #ea5252, 0 0 60px #e52929, 0 0 70px #e00000;
-    
+
 //     to {
 //       text-shadow: 0 0 20px #ffffff, 0 0 30px #e00000, 0 0 40px #e52929, 0 0 50px #ea5252, 0 0 60px #ee7575, 0 0 70px #f8c4c4, 0 0 80px #f8c4c4;
 //     }
@@ -89,39 +90,34 @@ function QuestionWidget({
   onSubmit,
   addResult,
 }) {
-  const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
+  const [selectedAlternative, setSelectedAlternative] = React.useState(
+    undefined
+  );
   const [isQuestionSubmited, setIsQuestionSubmited] = React.useState(false);
   const questionId = `question__${questionIndex}`;
   const isCorrect = selectedAlternative === question.answer;
   const hasAlternativeSelected = selectedAlternative !== undefined;
-  console.log('hasAlternativeSelected:'+hasAlternativeSelected);
 
   return (
     <Widget>
       <Widget.Header>
         <BackLinkArrow href="/" />
-        <h3>
-          {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
-        </h3>
+        <h3>{`Pergunta ${questionIndex + 1} de ${totalQuestions}`}</h3>
       </Widget.Header>
 
       <img
         alt="Descrição"
         style={{
-          width: '100%',
-          height: '300px',
-          objectFit: 'cover',
+          width: "100%",
+          height: "300px",
+          objectFit: "cover",
         }}
         src={question.image}
       />
       <Widget.Content>
-        <h2>
-          {question.title}
-        </h2>
+        <h2>{question.title}</h2>
         <hr></hr>
-        <p>
-          {question.description}
-        </p>
+        <p>{question.description}</p>
 
         <AlternativeForm
           onSubmit={(infosDoEvento) => {
@@ -129,58 +125,59 @@ function QuestionWidget({
             setIsQuestionSubmited(true);
             setTimeout(() => {
               addResult(isCorrect);
+              onSubmit();
               setIsQuestionSubmited(false);
               setSelectedAlternative(undefined);
-              onSubmit();
+              
             }, 2 * 1000);
           }}
         >
           {question.alternatives.map((alternative, alternativeIndex) => {
             const alternativeId = `alternative__${alternativeIndex}`;
-            const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
+            const alternativeStatus = isCorrect ? "SUCCESS" : "ERROR";
             const isSelected = selectedAlternative === alternativeIndex;
+            console.log(alternativeId);
+            console.log(alternativeId + '_input');
             return (
-              <>
-              <Widget.Topic
-                as={motion.label}
-                transition={{
-                  delay: 0.8,
-                  duration: 0.5,
-                }}
-                variants={{
-                  show: { opacity: 1 },
-                  hidden: { opacity: 0 },
-                }}
+                <Widget.Topic
                 key={alternativeId}
-                htmlFor={alternativeId}
-                data-selected={isSelected}
-                data-status={isQuestionSubmited && alternativeStatus}
-              >
-                
-                <input
-                  type="radio"
-                  style={{ display: 'none' }}
-                  checked={isSelected}
-                  id={alternativeId}
-                  name={questionId}
-                  onChange={(arebaba) => {
-                    console.log(arebaba);
-                    console.log('alternativeIndex:'+alternativeIndex);
-                    setSelectedAlternative(alternativeIndex)
+                  as={motion.label}
+                  transition={{
+                    delay: 0.8,
+                    duration: 0.5,
                   }}
-                />
-                {alternative}
-              </Widget.Topic>
-              </>
+                  variants={{
+                    show: { opacity: 1 },
+                    hidden: { opacity: 0 },
+                  }}
+                  as="label"
+                  htmlFor={alternativeId}
+                  data-selected={isSelected}
+                  data-status={isQuestionSubmited &&
+                    alternativeStatus}
+                >
+                  <input
+                    type="radio"
+                    //checked={isSelected}
+                    id={alternativeId}
+                    name={questionId}
+                    onChange={() => setSelectedAlternative(alternativeIndex)}
+                  />
+                  {alternative}
+                </Widget.Topic>
             );
           })}
 
           {/* <pre>
             {JSON.stringify(question, null, 4)}
           </pre> */}
-          <Button type="submit" disabled={hasAlternativeSelected == false} text='Confirmar'/>
-          {isQuestionSubmited && isCorrect && <strong>Você acertou!</strong>}
-          {isQuestionSubmited && !isCorrect && <strong>Você errou!</strong>}
+          <Button
+            type="submit"
+            disabled={hasAlternativeSelected == false}
+            text="Confirmar"
+          />
+          {isQuestionSubmited && isCorrect && <h3>Você acertou!</h3>}
+          {isQuestionSubmited && !isCorrect && <h3>Você errou!</h3>}
         </AlternativeForm>
       </Widget.Content>
     </Widget>
@@ -188,9 +185,9 @@ function QuestionWidget({
 }
 
 const screenStates = {
-  QUIZ: 'QUIZ',
-  LOADING: 'LOADING',
-  RESULT: 'RESULT',
+  QUIZ: "QUIZ",
+  LOADING: "LOADING",
+  RESULT: "RESULT",
 };
 export default function QuizPage({ externalQuestions, externalBg }) {
   const [screenState, setScreenState] = React.useState(screenStates.LOADING);
@@ -204,10 +201,7 @@ export default function QuizPage({ externalQuestions, externalBg }) {
 
   function addResult(result) {
     // results.push(result);
-    setResults([
-      ...results,
-      result,
-    ]);
+    setResults([...results, result]);
   }
 
   // [React chama de: Efeitos || Effects]
@@ -215,16 +209,20 @@ export default function QuizPage({ externalQuestions, externalBg }) {
   // atualizado === willUpdate
   // morre === willUnmount
   React.useEffect(() => {
+    if (videoRef != undefined) {
+      if (videoRef.current != undefined)
+        if (videoRef.current.muted != undefined) videoRef.current.muted = false;
+    }
     // fetch() ...
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
-    }, 1 * 2000);
-  // nasce === didMount
+    }, 3 * 2000);
+    // nasce === didMount
   }, []);
 
   function handleSubmitQuiz() {
     const nextQuestion = questionIndex + 1;
-    
+
     if (nextQuestion < totalQuestions) {
       setCurrentQuestion(nextQuestion);
     } else {
@@ -233,11 +231,16 @@ export default function QuizPage({ externalQuestions, externalBg }) {
   }
 
   return (
-    <QuizBackground backgroundImage={bg} videoSrc='/BattleScarifBackgroundVideo.mp4' videoReference={videoRef}>
+    <QuizBackground
+      backgroundImage={bg}
+      videoSrc="/BattleScarifBackgroundVideo.mp4"
+      videoReference={videoRef}
+    >
       <QuizContainer>
         <QuizLogo />
         {screenState === screenStates.QUIZ && (
           <QuestionWidget
+            key={questionIndex}
             question={question}
             questionIndex={questionIndex}
             totalQuestions={totalQuestions}
@@ -246,9 +249,13 @@ export default function QuizPage({ externalQuestions, externalBg }) {
           />
         )}
 
-        {screenState === screenStates.LOADING && <LoadingWidget />}
+        {screenState === screenStates.LOADING && (
+          <LoadingWidget videoReference={videoRef} />
+        )}
 
-        {screenState === screenStates.RESULT && <ResultWidget results={results} />}
+        {screenState === screenStates.RESULT && (
+          <ResultWidget results={results} />
+        )}
       </QuizContainer>
       <GitHubCorner projectUrl="https://github.com/darthrodolfo/aluraquiz-darthquiz" />
       <UnmuteButtonCorner videoReference={videoRef}></UnmuteButtonCorner>
