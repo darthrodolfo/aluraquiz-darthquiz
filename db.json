@@ -1,43 +1,144 @@
 {
   "bg": "https://i.imgur.com/dEKFtlI.jpg",
-  "title": "Quiz de Star Wars (by Darth)",
+  "title": "Star Wars Quiz",
   "description": "Teste os seus conhecimentos sobre Star Wars e vamos ver se a força esta com você!",
   "questions": [
     {
-      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-      "title": "Como fazer um seletor por id via CSS?",
-      "description": "Essa é pra aquecer",
-      "answer": 2,
+      "image": "http://1.bp.blogspot.com/-lAcCKUqnOzk/VSaVX7W9zPI/AAAAAAAAQhg/9qshkM_tGWE/s1600/Luke%2BSkywalker%2B4.gif",
+      "title": "Quantos 'Sóis' existem no sistema Solar do Planeta Tattoine?",
+      "description": "Essa é fácil hein padawan?",
+      "answer": 1,
       "alternatives": [
-        ".elemento",
-        "*elemento",
-        "#elemento",
-        "%elemento"
+        "1 Sol",
+        "2 Sóis",
+        "3 Sóis",
+        "4 Sóis"
       ]
     },
     {
-      "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-      "title": "Como fazer um background gradiente com css?",
-      "description": "Faz tempo em haha",
-      "answer": 0,
+      "image": "https://i.makeagif.com/media/9-07-2015/aU5jgx.gif",
+      "title": "Em qual dos filmes vemos a aventura que levou os rebeldes a obterem os planos de projeto da Estrela da Morte?",
+      "description": "Excelente filme digasse de passagem...",
+      "answer": 2,
       "alternatives": [
-         "background: linear-gradient(#e66465, #9198e5);",
-         "background: gradient(#e66465, #9198e5);"
+        "Episódio 3",
+        "Han Solo",
+        "Rogue One",
+        "Episódio 2"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/8JTFsZmnTR1Rs1JFVP/giphy.gif",
+      "title": "Quantos sabres de luz o General Grievous tem?",
+      "description": "Coff... Coff...",
+      "answer": 2,
+      "alternatives": [
+        "2 Sabre",
+        "3 Sabres",
+        "4 Sabres",
+        "5 Sabres"
+      ]
+    },
+    {
+      "image": "https://media1.tenor.com/images/e0af2a66ec2b8fa23dc042cf06498946/tenor.gif?itemid=17516298",
+      "title": "Qual é o nome das naves de bombardeio da frota Rebelde?",
+      "description": "São naves lindas com poderosos escudos e poder de fogo!",
+      "answer": 3,
+      "alternatives": [
+        "A Wing",
+        "Tie Bomber",
+        "X Wing",
+        "Y Wing"
+      ]
+    },
+    {
+      "image": "http://cdn.lowgif.com/full/b8a21b460db5dcd1-emperor-palpatine-do-it-gif-11-gif-images-download.gif",
+      "title": "Qual é o código da famosa ordem dada pelo Emperador Palpatine, que iniciou a caçada contra os Jedi?",
+      "description": "Um episódio muito triste na história de toda galáxia!",
+      "answer": 2,
+      "alternatives": [
+        "Ordem 42",
+        "Ordem 56",
+        "Ordem 66",
+        "Ordem 99"
+      ]
+    },
+    {
+      "image": "https://i.imgur.com/MxhztMh.gif",
+      "title": "Em quantos parcecs Han Solo venceu a famosa Corrida de Kessel/Kessel Run)?",
+      "description": "Never tell me the odds!",
+      "answer": 1,
+      "alternatives": [
+        "10 Parcecs",
+        "12 Parcecs",
+        "15 Parcecs",
+        "11 Parcecs"
+      ]
+    },
+    {
+      "image": "https://i.gifer.com/5xmf.gif",
+      "title": "Qual é o primeiro planeta a ser obliterado pela Estrela da Morte?",
+      "description": "Booooooooooo (som dos computadores da estrela da morte antes dela atirar).",
+      "answer": 3,
+      "alternatives": [
+        "Tattoine",
+        "Yavin 4",
+        "Naboo",
+        "Alderaan"
+      ]
+    },
+    {
+      "image": "https://i.giphy.com/media/l4KhN64x7nycCsbjW/source.gif",
+      "title": "Qual é o planeta em que os Rebeldes capturam os planos da Estrela da Morte?",
+      "description": "Foi uma missão suícida. Uma vitória heróica e suada para os rebeldes! (som dos computadores da estrela da morte antes dela atirar).",
+      "answer": 2,
+      "alternatives": [
+        "Endor",
+        "Jakku",
+        "Scarif",
+        "Yavin 4"
+      ]
+    },
+    {
+      "image": "https://media1.tenor.com/images/021bf9b71b6872e8890fc5cf7d093e27/tenor.gif?itemid=13506268",
+      "title": "Qual é o nome do planeta em que a raça dos Wookies vivem?",
+      "description": "Mmmmmmrrrrrrrr",
+      "answer": 2,
+      "alternatives": [
+        "Alderaan",
+        "Geonesis",
+        "Kashyyyk",
+        "Alderaan"
+      ]
+    },
+    {
+      "image": "https://thumbs.gfycat.com/FancyInsistentKiwi-size_restricted.gif",
+      "title": "Qual é a categoria de naves em que a Millenium Falcon é classificada?",
+      "description": "A Millennium Falcon foi elemento-chave em algumas das maiores vitórias da Aliança Rebelde sobre o Império.",
+      "answer": 2,
+      "alternatives": [
+        "Sem classificação",
+        "Caça",
+        "Cargueiro Leve",
+        "Nave de corrida"
       ]
     }
   ],
   "external": [
-    ""
+    "https://aluraquiz-css.omariosouto.vercel.app/",
+    "https://aluraquiz-devsoutinho.omariosouto.vercel.app/"
   ],
   "theme": {
     "colors": {
-      "primary": "#ff9100",
-      "secondary": "#878787",
-      "mainBg": "#171B35",
+      "primary": "#960000",
+      "secondary": "#FFFFFF",
+      "mainBg": "#242424",
       "contrastText": "#FFFFFF",
       "wrong": "#f44336",
       "success": "#4CAF50",
-      "button": "#03a9f4"
+      "button": "#F40303",
+      "primaryGradientStart": "#333333",
+      "primaryGradientEnd": "#dd1818"
     },
     "borderRadius": "4px"
   }
