@@ -1,11 +1,11 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components';
 import Quiz from '../../src/screens/Quiz/index';
-import AluraLogo from '../../src/svg/AluraLogo.svg';
+//import AluraLogo from '../../src/svg/AluraLogo.svg';
 export default function QuizDaGalera({dbExterno}){
     return (
         <ThemeProvider theme={dbExterno.theme}>
-            <Quiz externalQuestion={dbExterno.questions} externalBg={dbExterno.bg} externalLogo={AluraLogo} />
+            <Quiz externalQuestion={dbExterno.questions} externalBg={dbExterno.bg} externalLogo={''} />
         </ThemeProvider>
     )
 }

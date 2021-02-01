@@ -13,11 +13,11 @@
     "next-link": "^2.0.0",
     "next-seo": "^4.17.0",
     "prop-types": "^15.7.2",
-    "react": "^16.8.0",
+    "react": "^16.14.0",
     "react-dom": "^16.8.0",
     "react-is": "^16.8.0",
     "react-lottie": "^1.2.3",
-    "styled-components": "^5.0.0"
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.8.0"

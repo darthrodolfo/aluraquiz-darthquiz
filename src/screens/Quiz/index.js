@@ -97,6 +97,7 @@ function QuestionWidget({
   const questionId = `question__${questionIndex}`;
   const isCorrect = selectedAlternative === question.answer;
   const hasAlternativeSelected = selectedAlternative !== undefined;
+  const form = React.useRef();
 
   return (
     <Widget>
@@ -120,15 +121,16 @@ function QuestionWidget({
         <p>{question.description}</p>
 
         <AlternativeForm
+          ref={form}
           onSubmit={(infosDoEvento) => {
             infosDoEvento.preventDefault();
             setIsQuestionSubmited(true);
             setTimeout(() => {
               addResult(isCorrect);
-              onSubmit();
               setIsQuestionSubmited(false);
               setSelectedAlternative(undefined);
-              
+              form.current.reset();
+              onSubmit();
             }, 2 * 1000);
           }}
         >
@@ -136,35 +138,33 @@ function QuestionWidget({
             const alternativeId = `alternative__${alternativeIndex}`;
             const alternativeStatus = isCorrect ? "SUCCESS" : "ERROR";
             const isSelected = selectedAlternative === alternativeIndex;
-            console.log(alternativeId);
-            console.log(alternativeId + '_input');
+
             return (
-                <Widget.Topic
+              <Widget.Topic
                 key={alternativeId}
-                  as={motion.label}
-                  transition={{
-                    delay: 0.8,
-                    duration: 0.5,
-                  }}
-                  variants={{
-                    show: { opacity: 1 },
-                    hidden: { opacity: 0 },
-                  }}
-                  as="label"
-                  htmlFor={alternativeId}
-                  data-selected={isSelected}
-                  data-status={isQuestionSubmited &&
-                    alternativeStatus}
-                >
-                  <input
-                    type="radio"
-                    //checked={isSelected}
-                    id={alternativeId}
-                    name={questionId}
-                    onChange={() => setSelectedAlternative(alternativeIndex)}
-                  />
-                  {alternative}
-                </Widget.Topic>
+                as={motion.label}
+                transition={{
+                  delay: 0.8,
+                  duration: 0.5,
+                }}
+                variants={{
+                  show: { opacity: 1 },
+                  hidden: { opacity: 0 },
+                }}
+                as="label"
+                htmlFor={alternativeId}
+                data-selected={isSelected}
+                data-status={isQuestionSubmited && alternativeStatus}
+              >
+                <input
+                  type="radio"
+                  id={alternativeId}
+                  checked={hasAlternativeSelected}
+                  name={alternative}
+                  onChange={() => setSelectedAlternative(alternativeIndex)}
+                />
+                {alternative}
+              </Widget.Topic>
             );
           })}
 
@@ -240,7 +240,6 @@ export default function QuizPage({ externalQuestions, externalBg }) {
         <QuizLogo />
         {screenState === screenStates.QUIZ && (
           <QuestionWidget
-            key={questionIndex}
             question={question}
             questionIndex={questionIndex}
             totalQuestions={totalQuestions}
