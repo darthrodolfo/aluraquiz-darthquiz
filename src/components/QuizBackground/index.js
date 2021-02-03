@@ -36,8 +36,6 @@ const QuizBackgroundBase = styled.div`
 `;
 
 const QuizBackgroundVideo = styled.video`
-    right:0;
-    bottom:0;
     min-height: 100%;
     min-width: 100%;
     z-index:-1000;
@@ -46,6 +44,8 @@ const QuizBackgroundVideo = styled.video`
     height: auto;
     width:auto;
     opacity:1;
+    object-fit: cover;
+    left:0;
     //background: url(images/torre.jpg) no-repeat;
     //background: url(${({ backgroundImage }) => backgroundImage}) no-repeat;
 `;
